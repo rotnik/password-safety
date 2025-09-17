@@ -1,7 +1,7 @@
 # Password Security Analysis & Hash Demo
 
 ### Project Description
-A beginner-friendly cybersecurity project that evaluates password strength, hashes passwords with SHA-256, and visualizes the distribution of weak, medium, and strong passwords. Includes CSV export for analysis. Demonstrates Python scripting, basic security concepts, and data visualization.
+A beginner-friendly cybersecurity project that evaluates password strength, hashes passwords with SHA-256, and visualizes the distribution of weak, medium, and strong passwords. Includes XLSX export for analysis. Demonstrates Python scripting, basic security concepts, and data visualization.
 
 ## Features
 
@@ -11,7 +11,7 @@ Generate SHA-256 hashes of passwords to demonstrate secure storage.
 
 Visualize the distribution of weak, medium, and strong passwords with a bar chart.
 
-Export results to CSV for documentation or further analysis.
+Export results to XLSX for documentation or further analysis.
 
 Supports importing password lists from external files for scalability.
 
@@ -45,6 +45,10 @@ Prepare a password list file `passwords.txt` (one password per line) in the proj
 
 - Bar chart showing distribution of Weak, Medium, and Strong passwords.
 
+### View Results
+
+Excel file `/results/password_analysis_results.xlsx`
+
 ## Skills Demonstrated
 
 - Python scripting and file handling
@@ -53,12 +57,16 @@ Prepare a password list file `passwords.txt` (one password per line) in the proj
 
 - Data analysis and visualization
 
-- CSV export and report generation
+- XSLX export and report generation
 
 ## Notes
 
 - Safe dataset only: Do not include real user passwords.
 
 - Designed for learning and portfolio demonstration purposes.
+
+- Edit /data/passwords.txt to test with your own password lists.
+  
+- For larger datasets, you may download the RockYou list (not included in repo due to its origin in a breach). Add it locally if you want extended analysis.
 
 - Can be extended to check against known leak databases or integrate with interactive visualization tools
