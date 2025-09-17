@@ -2,12 +2,15 @@ import re
 import hashlib
 from collections import Counter
 import matplotlib.pyplot as plt
-import csv
 import os
+from openpyxl import Workbook
+from openpyxl.utils import get_column_letter
 
-data_folder = 'data'
-password_file = os.path.join(data_folder, 'passwords.txt')
+base_dir = os.path.dirname(os.path.abspath(__file__))
+data_folder = os.path.join(base_dir, 'data')
+results_folder = os.path.join(base_dir, 'results')
 
+password_file = os.path.join(data_folder, 'password.txt')
 passwords = []
 
 try:
@@ -51,16 +54,29 @@ for pwd in passwords:
 
 strength_count = Counter(strengths)
 
-results_folder = 'results'
 os.makedirs(results_folder, exist_ok=True)
-output_file = os.path.join(results_folder, 'password_analysis_results.csv')
+output_file = os.path.join(results_folder, 'password_analysis_results.xlsx')
 
-with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:
-    writer = csv.writer(csvfile)
-    writer.writerow(['Password', 'Strength', 'SHA-256 Hash'])
-    for pwd, strg, hsh in zip(passwords, strengths, hashed_passwords):
-        writer.writerow([pwd, strg, hsh])
+wb = Workbook()
+ws = wb.active
+ws.title = "Password Analysis"
+ws.append(['Password', 'Strength', 'SHA-256 Hash'])
 
+for pwd, strg, hsh in zip(passwords, strengths, hashed_passwords):
+    ws.append([pwd, strg, hsh])
+
+for col in ws.columns:
+    max_length = 0
+    col_letter = get_column_letter(col[0].column)
+    for cell in col:
+        try:
+            if len(str(cell.value)) > max_length:
+                max_length = len(cell.value)
+        except:
+            pass
+    ws.column_dimensions[col_letter].width = max_length + 2
+
+wb.save(output_file)
 print(f"Analysis exported to {output_file}")
 
 labels = strength_count.keys()
@@ -73,4 +89,6 @@ plt.xlabel("Strength")
 plt.ylabel("Count")
 plt.tight_layout()
 plt.show()
+
+
 
