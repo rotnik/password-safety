@@ -35,7 +35,7 @@ Prepare a password list file `passwords.txt` (one password per line) in the proj
 
 ### Run the script
 
-python `password_security.py`
+`python password_security.py`
 
 ### Outputs
 
