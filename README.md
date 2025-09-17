@@ -17,15 +17,15 @@ Supports importing password lists from external files for scalability.
 
 ## Installation
 
-Clone the repository:
+### Clone the repository
 
 git clone https://github.com/rotnik/password-safety.git
 
-Navigate to the project directory:
+### Navigate to the project directory
 
 cd password-safety
 
-Install required packages:
+### Install required packages
 
 pip install matplotlib
 
@@ -37,7 +37,7 @@ Run the script:
 
 python `password_security.py`
 
-Outputs:
+### Outputs
 
 - Console summary of password strengths.
 
