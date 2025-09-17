@@ -3,15 +3,18 @@ import hashlib
 from collections import Counter
 import matplotlib.pyplot as plt
 import csv
+import os
 
-password_file = 'passwords.txt'  
+data_folder = 'data'
+password_file = os.path.join(data_folder, 'passwords.txt')
+
 passwords = []
 
 try:
     with open(password_file, 'r', encoding='utf-8') as f:
         for line in f:
             pwd = line.strip()
-            if pwd:  
+            if pwd:
                 passwords.append(pwd)
 except FileNotFoundError:
     print(f"File {password_file} not found. Using sample passwords.")
@@ -22,7 +25,6 @@ except FileNotFoundError:
     ]
 
 print(f"Loaded {len(passwords)} passwords.")
-
 
 def check_password_strength(password):
     if len(password) < 8:
@@ -35,10 +37,8 @@ def check_password_strength(password):
         return 'Strong'
     return 'Medium'
 
-
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
-
 
 strengths = []
 hashed_passwords = []
@@ -49,11 +49,11 @@ for pwd in passwords:
     strengths.append(strength)
     hashed_passwords.append(hashed)
 
-
 strength_count = Counter(strengths)
 
-
-output_file = 'password_analysis.csv'
+results_folder = 'results'
+os.makedirs(results_folder, exist_ok=True)
+output_file = os.path.join(results_folder, 'password_analysis_results.csv')
 
 with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:
     writer = csv.writer(csvfile)
@@ -73,3 +73,4 @@ plt.xlabel("Strength")
 plt.ylabel("Count")
 plt.tight_layout()
 plt.show()
+
