@@ -19,21 +19,21 @@ Supports importing password lists from external files for scalability.
 
 ### Clone the repository
 
-git clone https://github.com/rotnik/password-safety.git
+`git clone https://github.com/rotnik/password-safety.git`
 
 ### Navigate to the project directory
 
-cd password-safety
+`cd password-safety`
 
 ### Install required packages
 
-pip install matplotlib
+`pip install matplotlib`
 
 ## Usage
 
 Prepare a password list file `passwords.txt` (one password per line) in the project directory.
 
-Run the script:
+### Run the script
 
 python `password_security.py`
 
