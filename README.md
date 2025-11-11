@@ -19,7 +19,7 @@ Supports importing password lists from external files for scalability.
 
 ### Clone the repository
 
-`git clone https://github.com/rotnik/password-safety.git`
+`git clone https://github.com/Russent/password-safety.git`
 
 ### Navigate to the project directory
 
